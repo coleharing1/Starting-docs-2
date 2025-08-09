@@ -1,6 +1,6 @@
 # Cursor & Claude Code Project Template
 
-[\![GitHub stars](https://img.shields.io/github/stars/coleharing1/cursor-project-template?style=social)](https://github.com/coleharing1/cursor-project-template/stargazers) [\![GitHub forks](https://img.shields.io/github/forks/coleharing1/cursor-project-template?style=social)](https://github.com/coleharing1/cursor-project-template/network/members)
+[![GitHub stars](https://img.shields.io/github/stars/coleharing1/cursor-project-template?style=social)](https://github.com/coleharing1/cursor-project-template/stargazers) [![GitHub forks](https://img.shields.io/github/forks/coleharing1/cursor-project-template?style=social)](https://github.com/coleharing1/cursor-project-template/network/members)
 
 A comprehensive template for bootstrapping AI-assisted full-stack web projects using Cursor AI and Claude Code (as of August 2025). This repo provides a documentation-first workflow, AI optimization strategies, MCP integration guides, and templates for building modular, scalable codebases optimized for modern AI development tools. Perfect for developers leveraging AI assistance (up to 95% automation) to create production-grade applications with Next.js, Supabase, Vercel, and more.
 
@@ -60,16 +60,16 @@ This creates a fully configured Next.js + TypeScript + Tailwind + SQLite project
 ```
 Starting-Documents/
 ├── 📄 README.md                       (You are here)
-├── 📄 GROK-NEW-PROJECT-SETUP.md      (Main guide - START HERE\!)
-├── 📄 setup.sh                        (Quick start script)
+├── 📄 GROK-NEW-PROJECT-SETUP.md      (Main guide - START HERE!)
+├── 📄 setup.sh                        (Quick start script - NEW!)
 ├── 📄 package.json                    (Pre-configured dependencies)
 ├── 📄 .env.local.example              (Environment variables template)
 │
 ├── 📁 01-templates/                   (Copy & customize these)
 │   ├── project-docs/                  - All documentation templates
 │   ├── ai-config/                     - AI assistant configs
-│   ├── phases/                        - Pre-filled phase checklists
-│   ├── adr/                           - Architecture decisions
+│   ├── phases/                        - Pre-filled phase checklists (NEW!)
+│   ├── adr/                           - Architecture decisions (NEW!)
 │   └── checklists/                    - Progress tracking
 │
 ├── 📁 02-examples/                    (Reference implementations)
@@ -81,7 +81,7 @@ Starting-Documents/
 │   ├── workflow/                      - AI optimization, tips
 │   └── maintenance/                   - Documentation upkeep
 │
-├── 📁 .github/                        (CI/CD)
+├── 📁 .github/                        (CI/CD - NEW!)
 │   └── workflows/ci.yml               - Automated testing pipeline
 │
 ├── 📁 .cursor/                        (Active Cursor config)
@@ -106,11 +106,10 @@ Starting-Documents/
 4. Use SQLite locally, migrate to Supabase when ready for production
 
 ## Contributing
-Contributions welcome\! Fork the repo, create a branch, and submit a PR. Follow the rules in PROJECT-RULES-TEMP.md. For issues, use GitHub Issues.
+Contributions welcome! Fork the repo, create a branch, and submit a PR. Follow the rules in PROJECT-RULES-TEMP.md. For issues, use GitHub Issues.
 
 ## License
 MIT License. See [LICENSE](LICENSE) for details.
 
 ---
-Built for AI-driven development—fork and adapt for your next project\!
-EOF < /dev/null
+Built for AI-driven development—fork and adapt for your next project! 

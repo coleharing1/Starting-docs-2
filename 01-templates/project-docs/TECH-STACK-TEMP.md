@@ -27,6 +27,13 @@ Fast local development without Docker or cloud complexity.
 - **Sessions**: JWT or database sessions
 - **Testing**: Mock auth for development
 
+### Development Tools
+- **TypeScript**: Strict mode enabled
+- **Linting**: ESLint with Next.js config
+- **Formatting**: Prettier or Biome
+- **Git Hooks**: Husky + lint-staged
+- **Testing**: Vitest (unit), React Testing Library, Playwright (E2E)
+
 ## Production Stack (Phase 5)
 
 ### Production Database
@@ -57,6 +64,19 @@ Fast local development without Docker or cloud complexity.
 8. Test all queries and mutations
 9. Enable RLS policies
 
+### Environment Variables
+```env
+# Development (SQLite)
+DATABASE_URL="file:./prisma/dev.db"
+NEXTAUTH_SECRET="development-secret"
+NEXTAUTH_URL="http://localhost:3000"
+
+# Production (Supabase)
+NEXT_PUBLIC_SUPABASE_URL="https://[project].supabase.co"
+NEXT_PUBLIC_SUPABASE_ANON_KEY="[anon-key]"
+SUPABASE_SERVICE_ROLE_KEY="[service-key]"
+```
+
 ## Benefits of This Approach
 
 ### For Development
@@ -77,3 +97,10 @@ Fast local development without Docker or cloud complexity.
 - **Proven stack**: Next.js + Vercel + Supabase
 - **Scalability**: Can handle significant traffic
 - **Developer experience**: Excellent tooling and documentation
+
+## Decision Log
+- **Why SQLite first?**: Zero config, perfect for prototyping
+- **Why Supabase over raw PostgreSQL?**: Built-in auth, realtime, storage
+- **Why Vercel?**: Optimized for Next.js, great DX
+- **Why TypeScript?**: Type safety, better AI assistance
+- **Why Tailwind?**: Utility-first, works well with component libraries
