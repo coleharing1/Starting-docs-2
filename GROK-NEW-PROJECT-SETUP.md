@@ -492,34 +492,105 @@ Include specific examples for our tech stack.
 
 ### 13. Set Up AI Assistant Rules (User Action)
 
-#### For Cursor:
-Create `.cursor/rules.mdc` with YAML frontmatter:
+#### For Cursor - Modular Rules Architecture (August 2025):
 
+Follow the comprehensive guide in **@CURSOR-RULES-SETUP-GUIDE-2025.md** for the latest best practices. Here's the implementation:
+
+**Step 1: Create Directory Structure**
+```bash
+mkdir -p .cursor/rules
+```
+
+**Step 2: Create Index File (`.cursor/rules.mdc`)**
 ```yaml
 ---
-description: "Project-specific AI behavior rules"
-alwaysApply: true
+description: "Index of modular rules - documentation only"
+alwaysApply: false  # IMPORTANT: Index should NOT be alwaysApply
+priority: "low"
+version: 1.0.0
 ---
-# AI Assistant Rules
+# Project Rules System
 
-## Code Quality Rules
-- Only modify code directly relevant to requests
-- Never use placeholders like "// ... rest of code"
-- Reference similar existing components when creating new ones
-- Follow patterns in @CLAUDE.md and @project-rules.md
+## Active Modules
+- 000-core.mdc - Minimal universal principles
+- 010-safety.mdc - Command/terminal safety
+- 100-frontend.mdc - React/UI patterns
+- 200-backend.mdc - API/database rules
+- 300-testing.mdc - Test requirements
+- 900-context.mdc - AI memory management
 
-## Context Persistence Rules - CRITICAL
-- **PROJECT HISTORY TRACKING**: After every 5-10 file modifications, remind to update @project-history.md
-- Track file change count internally during the session
-- When count reaches 5-10, prompt: "You've modified [X] files. Please update @project-history.md with a summary of recent changes."
-- Always check @project-history.md when starting a new session or resuming work
-- If @project-history.md exists but hasn't been updated recently, suggest updating it before proceeding
-
-## Session Management
-- At start of session: Read @project-history.md to understand previous work
-- During session: Track files modified and suggest history updates
-- At end of session: Remind to update project history before closing
+Reference @CURSOR-RULES-SETUP-GUIDE-2025.md for detailed setup
 ```
+
+**Step 3: Create Core Rules (`.cursor/rules/000-core.mdc`)**
+```yaml
+---
+description: "Minimal universal rules - keep under 100 lines for performance"
+alwaysApply: true
+priority: "critical"
+version: 1.0.0
+tags: ["core", "universal"]
+context_limit: 100
+---
+# Core Universal Rules
+
+## Code Quality
+- Files MUST be under 500 lines
+- Only modify code relevant to request
+- No placeholders like "// ... rest of code"
+- Complete all implementations
+
+## Programming Patterns
+- Prefer functional programming
+- Use descriptive names (isLoading, hasError)
+- Throw errors explicitly
+- Add @fileoverview to all files
+
+## AI Interaction
+- Ask clarifying questions only when truly ambiguous
+- Reference existing patterns first
+- Update project-history.md every 5-10 files
+```
+
+**Step 4: Create Context Management Rules (`.cursor/rules/900-context.mdc`)**
+```yaml
+---
+description: "AI context persistence across sessions"
+alwaysApply: true
+priority: "critical"
+version: 1.0.0
+tags: ["context", "memory"]
+context_limit: 200
+---
+# Context Management
+
+## Session Start
+1. Read @project-history.md first
+2. Check last update timestamp
+3. Reference recent changes
+
+## File Tracking
+- At 5 files: "📝 Consider updating history"
+- At 10 files: "⚠️ UPDATE project-history.md NOW"
+- Reset counter after update
+
+## Context Recovery Protocol
+- If context lost, immediately reference @project-history.md
+- Cross-reference with @CLAUDE.md for full understanding
+```
+
+**Step 5: Create Domain-Specific Rules** (as needed)
+- Frontend rules: `.cursor/rules/100-frontend.mdc` (use globs for React/TSX files)
+- Backend rules: `.cursor/rules/200-backend.mdc` (use globs for API routes)
+- Testing rules: `.cursor/rules/300-testing.mdc` (use globs for test files)
+
+**Key Changes in 2025 (from @CURSOR-RULES-SETUP-GUIDE-2025.md):**
+- ✅ Use `globs` instead of `fileGlobs` (deprecated)
+- ✅ Priority as strings: "critical", "high", "medium", "low"
+- ✅ Add `context_limit` to prevent token overflow
+- ✅ Keep always-apply rules under 200 total lines
+- ✅ Use specific glob patterns for performance
+- ✅ Include version numbers for tracking changes
 
 #### For Claude Code:
 Initialize with `/init` command to create CLAUDE.md, then maintain it as persistent project memory across sessions.
@@ -529,8 +600,15 @@ Initialize with `/init` command to create CLAUDE.md, then maintain it as persist
 2. **Set Up Yolo Mode**: Allow Cursor to run tests without confirmation
 3. **Configure MCP**: Add Supabase MCP server in Settings > MCP (see @MCP-SETUP-GUIDE.md)
 4. **Git Hooks**: Install Husky for pre-commit testing
+5. **Performance Monitoring**: Check context window usage at conversation end
 
-**Note**: Both `.cursor/rules.mdc` and `CLAUDE.md` should be version controlled and updated as project evolves.
+**Performance Requirements (August 2025):**
+- Context window usage: <30% on average
+- Rule loading time: <100ms
+- Always-apply total: <200 lines
+- Individual rule files: 100-300 lines
+
+**Note**: See @CURSOR-RULES-SETUP-GUIDE-2025.md for complete implementation details, glob patterns, and troubleshooting.
 
 ### 14. Update README.md
 **Prompt:**
