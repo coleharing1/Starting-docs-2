@@ -1,0 +1,21 @@
+---
+description: "Python development patterns for FastAPI/Flask and tooling."
+globs: ["**/*.py", "backend/**/*.py"]
+tags: ["python", "backend"]
+priority: "medium"
+version: 1.0.0
+context_limit: 200
+---
+# Python Development Rules
+
+## Framework
+- Prefer FastAPI for APIs; use Pydantic models for validation.
+- Structure modules by feature; avoid giant files.
+
+## Tooling
+- Use `ruff` and `black` for lint/format.
+- Add type hints; enable `mypy` for critical modules.
+
+## Testing
+- Use `pytest`; keep tests small and isolated.
+- Mock external services; avoid network calls.

@@ -1,0 +1,25 @@
+---
+description: "Documentation standards and patterns for markdown and guides."
+globs: ["**/*.md", "**/*.mdx", "03-guides/**/*"]
+tags: ["docs", "markdown", "guides"]
+priority: "medium"
+version: 1.0.0
+context_limit: 200
+---
+# Documentation Rules
+
+## Style
+- Prefer short sections and bullets over long paragraphs.
+- Keep files under 500 lines; split when longer.
+- Use valid Markdown tables; include headers and separators.
+- Use fenced code blocks with language tags; avoid placeholders.
+
+## Structure
+- Add a clear title and short purpose statement at top.
+- Link to related docs (e.g., Start Here, Prompts) when relevant.
+- Keep prompts under `03-guides/workflow/prompts/`.
+- Place audits under `03-guides/maintenance/audits/`.
+
+## Maintenance
+- Update cross-references after file moves.
+- When deprecating, add a banner and move to `_archive/`.
