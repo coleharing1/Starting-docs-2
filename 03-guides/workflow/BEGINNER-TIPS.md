@@ -11,7 +11,7 @@ Key Principles:
 ## Getting Started with Cursor AI
 1. **Setup Basics**:
    - Install Cursor (cursor.com) and enable Pro for advanced AI (e.g., longer contexts).
-   - Open your template repo; run `setup.sh` to bootstrap.
+   - Open your template repo; follow the manual flow in `03-guides/setup/NEW-PROJECT-SETUP.md`.
    - Enable extensions: PostgreSQL, SQLTools, Docker, Supabase (for DB viz).
 
 2. **Key Shortcuts**:

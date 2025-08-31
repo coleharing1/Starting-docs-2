@@ -4,15 +4,15 @@ This guide provides a step-by-step process for deploying your project to product
 
 Key Principles:
 - **Local vs. Prod Parity**: Mirror setups to avoid "works on my machine" issues.
-- **Automation-First**: Use Git pushes for CI/CD; env vars for secrets.
+- **Automation-First (Optional)**: Use CI/CD; env vars for secrets.
 - **Security**: Never commit credentials; enable RLS and Vercel's protections.
-- **2025 Updates**: Leverage Vercel's AI-optimized deploys (e.g., auto-scaling for edge functions) and Supabase's enhanced poolers (reduced latency by 20% in recent benchmarks).
+- **2025 Updates**: Leverage Vercel's AI-optimized deploys (e.g., auto-scaling for edge functions) and Supabase's enhanced poolers.
 
 ## Prerequisites
-- GitHub repo with your project (from template).
+- GitHub repo with your project
 - Accounts: Vercel (free tier), Supabase (free tier), GitHub.
 - Tools: Vercel CLI (`npm i -g vercel`), Supabase CLI (installed via `npm`).
-- Local setup complete (e.g., `setup.sh` run, tests passing).
+- Local build and tests pass.
 
 ## Step 1: Prepare Your Project
 1. **Env Vars**: Copy `.env.local.example` to `.env.local` (gitignore'd). For prod, use dashboard vars.
