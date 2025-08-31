@@ -2,7 +2,7 @@
 
 [![GitHub stars](https://img.shields.io/github/stars/coleharing1/cursor-project-template?style=social)](https://github.com/coleharing1/cursor-project-template/stargazers) [![GitHub forks](https://img.shields.io/github/forks/coleharing1/cursor-project-template?style=social)](https://github.com/coleharing1/cursor-project-template/network/members)
 
-A comprehensive template for bootstrapping AI-assisted full-stack web projects using Cursor AI and Claude Code (as of August 2025). This repo provides a documentation-first workflow, AI optimization strategies, MCP integration guides, and templates for building modular, scalable codebases optimized for modern AI development tools. Perfect for developers leveraging AI assistance (up to 95% automation) to create production-grade applications with Next.js, Supabase, Vercel, and more.
+A comprehensive template for bootstrapping AI-assisted full-stack web projects using Cursor AI and Claude Code (as of August 2025). This repo provides a documentation-first workflow, AI optimization strategies, MCP integration guides, and templates for building modular, scalable codebases optimized for modern AI development tools. Perfect for developers leveraging AI assistance (up to 95% automation) to create production-grade applications with modern frameworks like Next.js, SvelteKit, or Nuxt, and backends like Supabase.
 
 ## Features
 - **🚀 Instant Setup**: Run `./setup.sh` for a complete Next.js + TypeScript + Tailwind + SQLite project in 3 minutes
@@ -40,14 +40,14 @@ This creates a fully configured Next.js + TypeScript + Tailwind + SQLite project
    npm install
    ```
 3. **Configure AI Tools**:
-   - **Cursor**: Open project, upload templates to Knowledge (see Step 0 in GROK-NEW-PROJECT-SETUP.md)
+   - **Cursor**: Open project, upload templates to Knowledge (see `START-HERE.md` and `PROMPTS-*.md`)
    - **Claude Code**: Run `/init` to create CLAUDE.md for persistent context
-4. **Follow the Guide**: Start with GROK-NEW-PROJECT-SETUP.md for step-by-step prompts to generate your project's docs.
+4. **Follow the Guide**: Start with `START-HERE.md`, then use `PROMPTS-INITIAL-DOCS.md`, `PROMPTS-PLANNING-TRACKING.md`, and `PROMPTS-ADVANCED-MAINTENANCE.md` to generate your project's docs.
 
 **Prerequisites**: Node.js 18+, Git, Cursor AI (Pro recommended), Claude Code (optional)
 
 ## Usage
-- **Generate Docs**: Use prompts in GROK-NEW-PROJECT-SETUP.md (e.g., for project-overview.md)
+- **Generate Docs**: Use prompts in `PROMPTS-*.md` (e.g., for project-overview.md)
 - **Optimize Workflow**: Follow AI-WORKFLOW-OPTIMIZATION.md for 5-30x productivity gains
 - **Configure MCP**: Set up Model Context Protocol using MCP-SETUP-GUIDE.md
 - **Build Iteratively**: Create phase docs in _docs/phases/ and implement features
@@ -57,43 +57,46 @@ This creates a fully configured Next.js + TypeScript + Tailwind + SQLite project
 
 ## 📚 Repository Structure
 
+This repository contains templates and guides to bootstrap a new project. The `setup.sh` script will generate a complete project structure in a new directory.
+
+### Contained in this Repository (`Starting-Documents/`)
 ```
 Starting-Documents/
 ├── 📄 README.md                       (You are here)
-├── 📄 GROK-NEW-PROJECT-SETUP.md      (Main guide - START HERE!)
-├── 📄 setup.sh                        (Quick start script - NEW!)
-├── 📄 package.json                    (Pre-configured dependencies)
-├── 📄 .env.local.example              (Environment variables template)
+├── 📄 START-HERE.md                  (Main guide - START HERE!)
+├── 📄 PROMPTS-*.md                    (Detailed AI prompts)
+├── 📄 setup.sh                        (Quick start script)
 │
 ├── 📁 01-templates/                   (Copy & customize these)
+│   ├── ai-config/                     - AI assistant configs (.cursor/, CLAUDE.md)
 │   ├── project-docs/                  - All documentation templates
-│   ├── ai-config/                     - AI assistant configs
-│   ├── phases/                        - Pre-filled phase checklists (NEW!)
-│   ├── adr/                           - Architecture decisions (NEW!)
-│   └── checklists/                    - Progress tracking
+│   ├── phases/                        - Pre-filled phase checklists
+│   └── ...
 │
 ├── 📁 02-examples/                    (Reference implementations)
-│   ├── themes/                        - Complete theme examples
-│   └── project-brainstorm/            - Sample planning docs
 │
-├── 📁 03-guides/                      (How-to guides)
-│   ├── setup/                         - Database, deployment, MCP
-│   ├── workflow/                      - AI optimization, tips
-│   └── maintenance/                   - Documentation upkeep
-│
-├── 📁 .github/                        (CI/CD - NEW!)
-│   └── workflows/ci.yml               - Automated testing pipeline
-│
-├── 📁 .cursor/                        (Active Cursor config)
-│   └── rules.mdc                      - AI behavior rules
-│
-└── 📁 project_brainstorm/             (Your ideas go here)
-    └── README.md                      - Instructions for brainstorming
+└── 📁 03-guides/                      (How-to guides)
+```
+
+### Generated in Your New Project
+```
+your-new-project/
+├── src/
+├── _docs/
+├── project_brainstorm/
+├── .cursor/
+├── .github/
+├── prisma/
+├── public/
+├── tests/
+├── .env.local
+├── package.json
+└── ... all other project files
 ```
 
 ### 🚀 What's New
 - **Complete setup.sh script** - Creates a working Next.js project instantly
-- **All missing templates added** - TECH-STACK, USER-FLOW, UI-RULES templates
+- **All missing templates added** - All `-TEMPLATE.md` files for core docs
 - **Pre-filled phase checklists** - 40-50 tasks per phase, ready to use
 - **ADR templates** - Document your architectural decisions
 - **Production configs** - ESLint, Prettier, Husky, CI/CD pipeline included

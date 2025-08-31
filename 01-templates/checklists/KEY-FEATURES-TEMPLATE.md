@@ -6,18 +6,19 @@ Format it as a markdown file (key-features-checklist.md) in your _docs/ folder. 
 
 Instructions for Use and Maintenance
 Creation: Start by generating this from @project-overview.md and @user-flow.md. Prompt your AI: "Create key-features-checklist.md with checkboxes, priorities, and links to docs. Base on project goals and features."
-Structure Example:
-Core Features:
- User Authentication (High) - Secure login/register; ref @user-flow.md.
- Data Dashboard (Med) - Display user metrics; ref @ui-rules.md.
-UI/UX Features:
- Responsive Design (High) - Mobile-first; ref @theme-rules.md.
-Backend/DB Features:
- API Endpoints (High) - CRUD operations; ref @api-rules.md.
- Database Schema (Med) - Migrations setup; ref @database-overview.md.
-Testing/Deployment:
- Unit Tests (Med) - 80% coverage; ref @testing-rules.md.
- Prod Deploy (Low) - Vercel setup; ref @deployment-guide.md.
+
+Structure Example (Table):
+
+| Category        | Feature                | Priority | Status       | Notes/Links                 |
+|-----------------|------------------------|----------|--------------|-----------------------------|
+| Core            | User Authentication    | High     | [ ] Planned  | Ref @user-flow.md           |
+| Core            | Data Dashboard         | Medium   | [ ] Planned  | Ref @ui-rules.md            |
+| UI/UX           | Responsive Design      | High     | [ ] Planned  | Ref @theme-rules.md         |
+| Backend/DB      | API Endpoints (CRUD)   | High     | [ ] Planned  | Ref @api-rules.md           |
+| Backend/DB      | Database Schema        | Medium   | [ ] Planned  | Ref @database-overview.md   |
+| Testing/Deploy  | Unit Tests (80% crit.) | Medium   | [ ] Planned  | Ref @testing-rules.md       |
+| Testing/Deploy  | Production Deploy      | Low      | [ ] Planned  | Ref @deployment-guide.md    |
+
 Maintenance:
 Review weekly or per phase: Check off completed items; add notes (e.g., "Implemented in commit XYZ").
 Update via AI: After changes, prompt "Update @key-features-checklist.md with new feature [description] and set priority."

@@ -1,3 +1,6 @@
+// NOTE: This is a template file. It represents the package.json that will be generated
+// in a new project when using the `setup.sh` script. Do not run `npm install` in this directory.
+
 {
   "name": "cursor-project-template",
   "version": "1.0.0",

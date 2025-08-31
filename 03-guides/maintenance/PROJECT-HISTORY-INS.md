@@ -13,7 +13,7 @@ Changes:
 Added: project-overview.md, setup.sh.
 Modified: package.json with deps.
 Removed: None.
-Rationale/Impact: Establishes foundation per @GROK-NEW-PROJECT-SETUP.md; enables quick starts with AI prompts.
+Rationale/Impact: Establishes foundation per @START-HERE.md and PROMPTS docs; enables quick starts with AI prompts.
 Related: Ref @project-overview.md; Tests: Passed locally.
 Older Entry - Commit: ...
 ...

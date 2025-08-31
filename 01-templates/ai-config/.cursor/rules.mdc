@@ -1,0 +1,25 @@
+---
+description: "Index of modular rules - documentation only"
+alwaysApply: false
+priority: "low"
+version: 1.0.0
+---
+# Project Rules System
+
+This file serves as an index and documentation for the modular rules system. It should NOT be set to `alwaysApply: true`.
+
+## Active Modules
+
+The following modules are available in the `rules/` directory. Copy the ones relevant to your project into your project's `.cursor/rules/` directory.
+
+- `000-core.mdc` - Minimal universal principles (always-apply)
+- `900-context.mdc` - AI memory and context management (always-apply)
+
+### Optional Modules (`rules/modules/`)
+- `frontend-react.mdc` - React/Next.js frontend patterns
+- `backend-node.mdc` - Node.js/Express/Fastify API rules
+- `python.mdc` - Python-specific rules (e.g., FastAPI/Flask)
+- `testing.mdc` - Test requirements and best practices
+- `docs.mdc` - Documentation standards
+
+Reference `CURSOR-RULES-SETUP-GUIDE-2025.md` for detailed setup and best practices.

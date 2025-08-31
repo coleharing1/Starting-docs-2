@@ -1,3 +1,5 @@
+# This is a theoretical exploration—do not treat as current functionality. This document analyzes how Google's Gemini models could integrate into a developer workflow if a command-line tool equivalent to Claude Code existed as of August 2025.
+
 I'll research how adding Gemini CLI to our Claude Code + Cursor workflow would work and what unique advantages it might bring.
 Ran tool
 Ran tool

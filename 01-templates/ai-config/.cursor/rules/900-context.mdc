@@ -1,0 +1,24 @@
+---
+description: "AI context persistence and memory management across sessions"
+alwaysApply: true
+priority: "critical"
+version: 1.0.0
+tags: ["context", "memory"]
+context_limit: 200
+---
+# Context Management
+
+## Session Start Protocol
+1.  Read `@project-history.md` first to understand previous work.
+2.  Check the last update timestamp to gauge session freshness.
+3.  Reference recent changes when making architectural decisions.
+4.  Consult `@CLAUDE.md` for project conventions and status.
+
+## File Modification Tracking
+- At 5 file modifications: "📝 Consider updating project-history.md with recent changes."
+- At 10 file modifications: "⚠️ It's a good time to update project-history.md now to ensure context is not lost."
+- Reset counter after a history update.
+
+## Context Recovery Protocol
+- If context seems lost or actions are repetitive, immediately re-read `@project-history.md`.
+- Cross-reference with `@CLAUDE.md` and the project's core documentation to re-establish a baseline understanding.

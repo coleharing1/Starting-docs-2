@@ -1,0 +1,31 @@
+---
+description: "Frontend development patterns for React, Next.js, and other modern frameworks."
+globs: ["app/**/*.{tsx,jsx}", "src/**/*.{tsx,jsx}", "components/**/*.{tsx,jsx}", "pages/**/*.{tsx,jsx}"]
+tags: ["frontend", "react", "ui", "nextjs"]
+priority: "high"
+version: 1.0.0
+context_limit: 300
+---
+# Frontend Development Rules
+
+## Component Design
+- Use functional components with hooks. No class components.
+- Default to server components in Next.js unless client-side interactivity is required (`'use client'`).
+- Keep components small and focused on a single responsibility.
+- Use composition over props drilling where possible.
+
+## State Management
+- Use simple `useState` or `useReducer` for local component state.
+- For shared state, prefer Zustand or React Context over more complex libraries unless necessary.
+- Avoid prop drilling deep into the component tree.
+
+## Styling
+- Use Tailwind CSS for styling.
+- Create reusable component classes with `@apply` or CVA (Class Variance Authority).
+- Adhere to the design system defined in `theme-rules.md`.
+
+## Accessibility (A11y)
+- All interactive elements must be keyboard accessible.
+- Use semantic HTML (e.g., `<button>`, `<nav>`).
+- Provide `alt` tags for images and `aria-label` for icon buttons.
+- Ensure sufficient color contrast.

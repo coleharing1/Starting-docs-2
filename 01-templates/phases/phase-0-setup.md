@@ -1,96 +1,106 @@
 # Phase 0: Project Setup & Configuration
 
 ## Overview
-Initial project setup, environment configuration, and development tooling installation.
+**Objective**: Set up a complete, production-ready development environment and project foundation without implementing any features. This checklist is the single source of truth for Phase 0.
 
-## Success Criteria
-- [ ] Development environment fully configured
-- [ ] All dependencies installed and working
-- [ ] Git repository initialized with proper structure
-- [ ] AI tools configured (Cursor/Claude Code)
-- [ ] Team can run the project locally
+**Duration**: 2-4 hours for beginners
+
+**Success Criteria**:
+- [ ] Development environment fully configured.
+- [ ] All dependencies installed and working.
+- [ ] Git repository initialized with proper structure and remote connection.
+- [ ] AI tools (`.cursor/` rules, `CLAUDE.md`) are configured.
+- [ ] The project runs locally without errors (`npm run dev`).
+- [ ] Linting, formatting, and testing commands execute successfully.
+- [ ] Git hooks trigger on commit.
+- [ ] CI/CD pipeline runs on push.
+
+---
 
 ## Detailed Checklist
 
+### 1. Environment Setup
+
 | ✓ | Task | File/Location | Dependencies | Time | Status | Notes |
 |---|------|---------------|-------------|------|--------|-------|
-| [ ] | Install Node.js 18+ and npm/pnpm | System | - | 5 min | Not Started | Check with `node -v` |
-| [ ] | Create project directory | `/project-name` | Node.js installed | 1 min | Not Started | Use kebab-case naming |
-| [ ] | Run setup.sh script | `/` | Project directory created | 3 min | Not Started | `chmod +x setup.sh && ./setup.sh` |
-| [ ] | Initialize Next.js with TypeScript | `/` | Setup script complete | 5 min | Not Started | Included in setup.sh |
-| [ ] | Configure Tailwind CSS | `tailwind.config.ts` | Next.js initialized | 3 min | Not Started | Included in setup.sh |
-| [ ] | Install shadcn/ui | `/src/components` | Tailwind configured | 5 min | Not Started | `npx shadcn-ui init` |
-| [ ] | Set up Prisma with SQLite | `/prisma` | Project initialized | 5 min | Not Started | `npx prisma init --datasource-provider sqlite` |
-| [ ] | Create folder structure | `/src/*` | Project initialized | 2 min | Not Started | components, lib, hooks, types |
-| [ ] | Configure ESLint | `.eslintrc.json` | Project initialized | 3 min | Not Started | Use Next.js config + Prettier |
-| [ ] | Configure Prettier | `.prettierrc` | ESLint configured | 2 min | Not Started | Set formatting rules |
-| [ ] | Set up Husky git hooks | `/.husky` | Git initialized | 3 min | Not Started | `npx husky-init` |
-| [ ] | Configure lint-staged | `.lintstagedrc.json` | Husky installed | 2 min | Not Started | Run linter on commit |
-| [ ] | Create .env.local | `.env.local` | - | 2 min | Not Started | Copy from .env.local.example |
-| [ ] | Set up .gitignore | `.gitignore` | Git initialized | 1 min | Not Started | Include node_modules, .env.local |
-| [ ] | Configure TypeScript | `tsconfig.json` | TypeScript installed | 3 min | Not Started | Strict mode, path aliases |
-| [ ] | Initialize Git repository | `/` | Project created | 1 min | Not Started | `git init` |
-| [ ] | Create initial commit | `/` | Git initialized | 1 min | Not Started | `git add . && git commit -m "Initial"` |
-| [ ] | Set up VS Code/Cursor | `.vscode/settings.json` | - | 5 min | Not Started | Format on save, ESLint integration |
-| [ ] | Configure Cursor AI rules | `.cursor/rules.mdc` | Cursor installed | 5 min | Not Started | Copy from template |
-| [ ] | Create CLAUDE.md | `CLAUDE.md` | - | 3 min | Not Started | Project context for Claude Code |
-| [ ] | Set up project brainstorm folder | `/project_brainstorm` | - | 5 min | Not Started | Add initial ideas and requirements |
-| [ ] | Create _docs structure | `/_docs` | - | 2 min | Not Started | phases, project-history folders |
-| [ ] | Install testing libraries | `package.json` | npm configured | 5 min | Not Started | Vitest, React Testing Library |
-| [ ] | Configure Vitest | `vitest.config.ts` | Vitest installed | 3 min | Not Started | Test configuration |
-| [ ] | Set up Playwright | `playwright.config.ts` | - | 5 min | Not Started | E2E testing setup |
-| [ ] | Create GitHub repository | GitHub | Git initialized | 3 min | Not Started | Public or private repo |
-| [ ] | Push to remote | GitHub | Remote added | 1 min | Not Started | `git push -u origin main` |
-| [ ] | Set up GitHub Actions | `.github/workflows/ci.yml` | GitHub repo created | 5 min | Not Started | Copy CI template |
-| [ ] | Configure Vercel project | Vercel Dashboard | GitHub connected | 5 min | Not Started | Connect GitHub repo |
-| [ ] | Test development server | `localhost:3000` | All setup complete | 2 min | Not Started | `npm run dev` |
-| [ ] | Test build process | `.next/` | Dependencies installed | 3 min | Not Started | `npm run build` |
-| [ ] | Test linting | Terminal | ESLint configured | 1 min | Not Started | `npm run lint` |
-| [ ] | Test formatting | Terminal | Prettier configured | 1 min | Not Started | `npm run format` |
-| [ ] | Verify database connection | Prisma Studio | Prisma configured | 2 min | Not Started | `npm run db:studio` |
-| [ ] | Document setup decisions | `_docs/decisions.md` | - | 10 min | Not Started | Record why choices were made |
-| [ ] | Update README.md | `README.md` | Setup complete | 5 min | Not Started | Project description, setup instructions |
-| [ ] | Create project-overview.md | `_docs/project-overview.md` | Brainstorm complete | 15 min | Not Started | Use GROK guide |
-| [ ] | Team onboarding | - | Setup complete | 30 min | Not Started | Walk through setup with team |
+| [ ] | Install Node.js (v18+) | System | None | 10 min | Not Started | Use `nvm` for version management. Check with `node -v`. |
+| [ ] | Install Cursor AI | System | None | 5 min | Not Started | Download from [cursor.com](https://cursor.com) |
+| [ ] | Install Git | System | None | 5 min | Not Started | [git-scm.com](https://git-scm.com) |
+| [ ] | Create GitHub account | github.com | Git installed | 5 min | Not Started | Free account is sufficient. |
+
+### 2. Project Initialization
+
+| ✓ | Task | File/Location | Dependencies | Time | Status | Notes |
+|---|------|---------------|-------------|------|--------|-------|
+| [ ] | Run `setup.sh` script | `/` | Environment Setup | 5 min | Not Started | `chmod +x setup.sh && ./setup.sh`. This bootstraps the project. |
+| [ ] | Open project in Cursor | Editor | `setup.sh` complete | 1 min | Not Started | `File > Open Folder...` |
+| [ ] | Test development server | Terminal | Project created | 2 min | Not Started | `npm run dev`. Visit `localhost:3000`. |
+| [ ] | Create initial commit | Terminal | Git repo initialized | 2 min | Not Started | `git add . && git commit -m "feat: initial project setup"` |
+
+### 3. Configuration Files
+
+| ✓ | Task | File/Location | Dependencies | Time | Status | Notes |
+|---|------|---------------|-------------|------|--------|-------|
+| [ ] | Review TypeScript config | `tsconfig.json` | Next.js app | 5 min | Not Started | Ensure `strict: true` and path aliases are correct. |
+| [ ] | Review ESLint config | `.eslintrc.json` | Next.js app | 5 min | Not Started | Customize rules as needed. |
+| [ ] | Review Prettier config | `.prettierrc` | Project | 2 min | Not Started | Adjust formatting rules if necessary. |
+| [ ] | Verify `.gitignore` | `.gitignore` | Git repo | 3 min | Not Started | Ensure `.env.local`, `node_modules`, `prisma/dev.db` are listed. |
+| [ ] | Create & fill `.env.local` | `.env.local` | Project | 2 min | Not Started | Copy from `.env.local.example` and fill in secrets. |
+| [ ] | Configure Tailwind theme | `tailwind.config.ts` | Tailwind installed | 10 min | Not Started | Add custom colors, fonts, and plugins per `theme-rules.md`. |
+
+### 4. Project & Documentation Structure
+
+| ✓ | Task | File/Location | Dependencies | Time | Status | Notes |
+|---|------|---------------|-------------|------|--------|-------|
+| [ ] | Verify folder structure | `/src` | Project created | 2 min | Not Started | `components`, `lib`, `hooks`, `types` should exist. |
+| [ ] | Add initial ideas | `project_brainstorm/` | Project created | 10 min | Not Started | Create `initial-ideas.md`, `requirements.md`, etc. |
+| [ ] | Create `_docs` structure | `/_docs` | Project created | 2 min | Not Started | Ready for generated docs. |
+| [ ] | Initialize `CLAUDE.md` | `CLAUDE.md` | Project created | 5 min | Not Started | Add project overview and tech stack for AI context. |
+| [ ] | Configure Cursor AI rules | `.cursor/rules/` | Cursor installed | 10 min | Not Started | Copy templates from `01-templates/ai-config/.cursor/`. |
+| [ ] | Initialize `project-history.md` | `/_docs/project-history.md` | _docs folder | 2 min | Not Started | Add the first entry for project setup. |
+
+### 5. Version Control & CI/CD
+
+| ✓ | Task | File/Location | Dependencies | Time | Status | Notes |
+|---|------|---------------|-------------|------|--------|-------|
+| [ ] | Create GitHub repository | github.com | GitHub account | 5 min | Not Started | Keep it private initially. |
+| [ ] | Add remote and push | Terminal | GitHub repo | 2 min | Not Started | `git remote add origin [url]` then `git push -u origin main`. |
+| [ ] | Set up branch protection | GitHub settings | GitHub repo | 5 min | Not Started | Protect the `main` branch from direct pushes. |
+| [ ] | Configure Vercel project | Vercel Dashboard | GitHub repo | 5 min | Not Started | Connect your GitHub repo for auto-deployments. |
+| [ ] | Verify GitHub Actions CI | `.github/workflows/ci.yml`| GitHub repo | 5 min | Not Started | CI should run on the first push and pass. |
+
+### 6. Development Tools & Database
+
+| ✓ | Task | File/Location | Dependencies | Time | Status | Notes |
+|---|------|---------------|-------------|------|--------|-------|
+| [ ] | Install editor extensions | VS Code/Cursor | Editor | 5 min | Not Started | ESLint, Prettier, Tailwind CSS IntelliSense, Prisma. |
+| [ ] | Configure editor settings | `.vscode/settings.json` | Editor | 5 min | Not Started | e.g., `"editor.formatOnSave": true`. |
+| [ ] | Verify Prisma schema | `prisma/schema.prisma`| Prisma init | 5 min | Not Started | Check the initial schema provided by `setup.sh`. |
+| [ ] | Verify database connection | Prisma Studio | Prisma configured | 2 min | Not Started | Run `npm run db:studio` to open the local DB GUI. |
+
+### 7. Final Verification
+
+| ✓ | Task | File/Location | Dependencies | Time | Status | Notes |
+|---|------|---------------|-------------|------|--------|-------|
+| [ ] | Test build process | Terminal | Dependencies installed | 3 min | Not Started | `npm run build` should complete without errors. |
+| [ ] | Test linting & formatting | Terminal | ESLint/Prettier | 2 min | Not Started | `npm run lint` and `npm run format:check` should pass. |
+| [ ] | Test test runner | Terminal | Vitest installed | 1 min | Not Started | `npm run test` should run (even if no tests exist yet). |
+| [ ] | Test Git hooks | Terminal | Husky configured | 2 min | Not Started | Make a small change and commit; lint-staged should run. |
+| [ ] | Document setup decisions | `_docs/adrs/` | All setup complete | 10 min | Not Started | Create an ADR for any key decisions made. |
+| [ ] | Update project history | `_docs/project-history.md`| All setup complete | 5 min | Not Started | Document the completion of Phase 0. |
+
+---
 
 ## Common Issues & Solutions
 
-### Issue: Node version too old
-**Solution:** Use nvm to install Node 18+
-```bash
-nvm install 18
-nvm use 18
-```
+| Issue | Solution |
+|---|---|
+| **Node.js version too old** | Use `nvm` to switch to Node 18+: `nvm install 18 && nvm use 18`. |
+| **Permission denied running script** | Make the script executable: `chmod +x setup.sh`. |
+| **Port 3000 already in use** | Find and stop the process (`lsof -i :3000` then `kill -9 [PID]`) or run on a different port (`npm run dev -- -p 3001`). |
+| **Prisma client not generated** | Run `npx prisma generate` manually. |
 
-### Issue: Permission denied running scripts
-**Solution:** Make scripts executable
-```bash
-chmod +x setup.sh
-```
-
-### Issue: Port 3000 already in use
-**Solution:** Kill the process or use different port
-```bash
-lsof -i :3000
-kill -9 [PID]
-# or
-npm run dev -- -p 3001
-```
-
-### Issue: Prisma client not generated
-**Solution:** Generate Prisma client
-```bash
-npx prisma generate
-```
-
-## Verification Steps
-1. ✅ `npm run dev` starts without errors
-2. ✅ `npm run build` completes successfully
-3. ✅ `npm run lint` passes
-4. ✅ `npm run test` runs (even if no tests yet)
-5. ✅ Database connection works (`npm run db:studio`)
-6. ✅ Git hooks trigger on commit
-7. ✅ GitHub Actions run on push
+---
 
 ## Next Phase
-Once all items are complete, proceed to [Phase 1: Frontend Foundation](phase-1-frontend-foundation.md)
+Once all items are complete, proceed to [Phase 1: Frontend Foundation](phase-1-frontend-foundation.md).

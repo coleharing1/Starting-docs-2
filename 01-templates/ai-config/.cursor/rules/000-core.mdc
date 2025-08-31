@@ -1,0 +1,26 @@
+---
+description: "Minimal universal rules - keep under 100 lines for performance"
+alwaysApply: true
+priority: "critical"
+version: 1.0.0
+tags: ["core", "universal"]
+context_limit: 100
+---
+# Core Universal Rules
+
+## Code Quality
+- Files MUST be under 500 lines.
+- Only modify code relevant to the request.
+- No placeholders like "// ... rest of code".
+- Complete all implementations.
+
+## Programming Patterns
+- Prefer functional and declarative programming.
+- Use descriptive names (e.g., `isLoading`, `hasError`).
+- Throw errors explicitly; avoid silent failures.
+- Add `@fileoverview` to all new files.
+
+## AI Interaction
+- Ask clarifying questions only when truly ambiguous.
+- Reference existing patterns and files first.
+- Update `project-history.md` every 5-10 file changes.

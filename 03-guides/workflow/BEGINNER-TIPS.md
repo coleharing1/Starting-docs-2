@@ -1,12 +1,12 @@
 # Beginner Tips: AI-First Development in Cursor AI
 
-This guide offers practical advice for beginners relying heavily on AI (e.g., 95% as mentioned in `@DATABASE-OVERVIEW.md`) to build projects in Cursor AI. It's designed to build confidence, avoid common pitfalls, and maximize tools like Cursor's Chat, Composer, and Knowledge features. Draw from setups in `@GROK-NEW-PROJECT-SETUP.md` and templates like `@PROJECT-OVERVIEW-TEMP.md`. Treat this as a companion to your project docs—revisit it during phases for iterative learning.
+This guide offers practical advice for beginners relying heavily on AI (e.g., 95% as mentioned in `@DATABASE-OVERVIEW.md`) to build projects in Cursor AI. It's designed to build confidence, avoid common pitfalls, and maximize tools like Cursor's Chat, Composer, and Knowledge features. Draw from setups in `@START-HERE.md` and the prompts in `@PROMPTS-INITIAL-DOCS.md`, `@PROMPTS-PLANNING-TRACKING.md`, and `@PROMPTS-ADVANCED-MAINTENANCE.md`. Treat this as a companion to your project docs—revisit it during phases for iterative learning.
 
 Key Principles:
 - **AI as Teacher**: Use AI to explain concepts, but verify outputs (e.g., run tests locally).
 - **Start Small**: Focus on one phase at a time; celebrate quick wins like a working MVP.
 - **Safety First**: Always test locally before prod (ref `@DATABASE-OVERVIEW.md`); question AI assumptions.
-- **2025 Mindset**: Leverage Cursor's background agents (for auto-refactoring) and supabase-mcp (for DB autonomy), but understand the basics.
+- **2025 Mindset**: Leverage Cursor's background agents (for auto-refactoring) and `@supabase/mcp-server-supabase` (for DB autonomy), but understand the basics.
 
 ## Getting Started with Cursor AI
 1. **Setup Basics**:
@@ -21,7 +21,7 @@ Key Principles:
    - Cmd/Ctrl + Shift + P: Settings > Add to Knowledge (upload docs like this one as @beginner-tips.md).
 
 3. **Rules and Notepads**:
-   - Create `.cursorrules.md` (or User Rules) with project-specific guidelines (ref Step 7 in `@GROK-NEW-PROJECT-SETUP.md`).
+   - Create `.cursorrules.md` (or User Rules) with project-specific guidelines (see `@START-HERE.md` prompts).
    - Use Notepads for quick notes (enable in Beta settings)—attach to prompts for context.
 
 ## Prompt Engineering Tips
@@ -56,7 +56,7 @@ Example Prompt: "Based on @PROJECT-OVERVIEW-TEMP.md, generate project-overview.m
 | Mindset | Question AI: "Why this over alternative?" | Builds expertise. |
 
 ## Next Steps
-- Follow `@GROK-NEW-PROJECT-SETUP.md` sequentially.
+- Follow `@START-HERE.md` sequentially.
 - After MVP, deploy (ref `@deployment-guide.md`) and test in prod.
 - Review this after each phase—update with your learnings.
 - If stuck: Prompt "Using @beginner-tips.md, help debug [issue]." 

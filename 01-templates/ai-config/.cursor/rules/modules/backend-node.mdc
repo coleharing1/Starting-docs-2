@@ -1,0 +1,27 @@
+---
+description: "Backend development patterns for Node.js (Express, Fastify) and APIs."
+globs: ["src/api/**", "src/server/**", "pages/api/**", "app/api/**"]
+tags: ["backend", "api", "node"]
+priority: "high"
+version: 1.0.0
+context_limit: 300
+---
+# Backend Development Rules
+
+## API Design
+- Follow RESTful principles for API endpoints.
+- Use consistent request/response formats (e.g., `{ data: T | null, error: string | null }`).
+- Implement proper HTTP status codes.
+- Version APIs (e.g., `/api/v1/...`).
+
+## Security
+- Validate and sanitize all incoming data (e.g., with Zod).
+- Implement authentication and authorization for all protected routes.
+- Never expose sensitive error messages or stack traces in production responses.
+- Use environment variables for all secrets.
+
+## Database
+- Use an ORM like Prisma or Drizzle for database interactions.
+- Use migrations for all schema changes.
+- Avoid raw SQL queries unless absolutely necessary.
+- Implement connection pooling.

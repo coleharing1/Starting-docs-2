@@ -85,6 +85,41 @@ Workflow Checklist:
 - **Scaling**: Set auto-scaling in Vercel; use Supabase's read replicas for high traffic.
 - **Pitfalls**: Mixing local/prod creds—always use env vars; forgetting RLS—enable by default.
 
+## Pre-Deploy Checklist (Critical)
+Before every production deployment, verify the following:
+- [ ] **Migrations**: All local database migrations have been successfully applied to the production database (`npx supabase db push`).
+- [ ] **Environment Variables**: All required environment variables are set in the Vercel dashboard for the production environment.
+- [ ] **RLS Policies**: Row Level Security is enabled and tested for all tables containing sensitive data.
+- [ ] **Tests**: All automated tests (unit, integration, E2E) are passing in your CI/CD pipeline.
+- [ ] **Local Build**: The project builds successfully locally (`npm run build`).
+- [ ] **Secrets**: No secret keys or credentials have been accidentally committed to version control.
+
+## Common Deployment Errors & Solutions
+
+| Error Message | Potential Cause | Solution |
+|---|---|---|
+| `Build failed with exit code 1` | Node.js version mismatch, missing dependency, or TypeScript error. | Check Vercel build logs. Ensure your local Node.js version matches the one specified in Vercel. Run `npm install` and `npm run build` locally to reproduce. |
+| `Error: connect ECONNREFUSED` | The application cannot reach the database. | Verify that the `SUPABASE_URL` and database connection string in Vercel are correct and are not using `localhost`. Ensure you are using the **Connection Pooler** string in Transaction Mode. |
+| `new row violates row-level security policy` | An insert/update operation is being performed by a user who does not have permission. | Test your RLS policies in the Supabase SQL Editor. Ensure your frontend code is authenticating the user correctly before making the request. |
+| `Function timed out` (Vercel) | A serverless function took too long to respond. | Optimize the function's performance. This is often caused by slow database queries. Check your query performance in the Supabase Dashboard and add indexes where necessary. |
+
+## Rollback Procedures
+
+Vercel makes rollbacks straightforward. If a deployment introduces a critical bug, you have several options:
+
+### 1. Instant Rollback (Recommended)
+1. Go to your project's **Deployments** tab in the Vercel Dashboard.
+2. Find the last known good deployment.
+3. Click the vertical ellipsis (`...`) on the right and select **Redeploy**.
+4. To make it the new production version instantly, you can also use the **Promote to Production** option on that same menu.
+
+### 2. Revert via Git
+1. Revert the problematic commit in your Git repository: `git revert HEAD`.
+2. Push the revert commit to your main branch: `git push origin main`.
+3. Vercel will automatically trigger a new deployment based on the reverted code.
+
+This approach is slower but keeps your Git history clean and is preferred for non-emergency rollbacks.
+
 ## 2025 Best Practices
 - Vercel AI Deploys: Enable for auto-code fixes during builds (beta as of May 2025).
 - Security: Use Vercel's WAF; Supabase's JWT for auth.

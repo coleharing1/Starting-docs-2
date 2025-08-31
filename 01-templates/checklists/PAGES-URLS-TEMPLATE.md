@@ -9,12 +9,13 @@ Creation: Base on @user-flow.md and @project-overview.md. Prompt AI: "Generate p
 
 Structure Example (Table):
 
+| Page/Route      | URL              | Description                              | Status       | Notes/Links                                                   |
+|-----------------|------------------|------------------------------------------|--------------|---------------------------------------------------------------|
+| Landing Page    | /                | Welcome screen with login/signup.        | In Progress  | Ref @user-flow.md; UI in `@components/Landing.tsx`.          |
+| Dashboard       | /dashboard       | User metrics overview.                   | Planned      | Requires auth; ref @api-rules.md.                             |
+| Profile Settings| /profile         | Edit user info.                           | Complete     | Tested; deploy status OK.                                     |
+| Users API (ex.) | /api/v1/users    | Fetch user data.                         | Broken       | Error in auth—fix per @deployment-guide.md.                   |
 
-Page/Route	URL	Description	Status	Notes/Links
-Landing Page	/	Welcome screen with login/signup.	In Progress	Ref @user-flow.md; UI in @components/Landing.tsx.
-Dashboard	/dashboard	User metrics overview.	Planned	Requires auth; ref @api-rules.md.
-Profile Settings	/profile	Edit user info.	Complete	Tested; deploy status OK.
-API Endpoint (example)	/api/v1/users	Fetch user data.	Broken	Error in auth—fix per @deployment-guide.md.
 Maintenance:
 
 Update Status: After building/testing a page, change to "In Progress" or "Complete". If issues arise (e.g., deploy fail), mark "Broken" with notes.

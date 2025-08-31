@@ -11,7 +11,7 @@
 <!-- Document key architectural choices and their rationale -->
 
 ### Tech Stack
-- **Frontend**: [e.g., Next.js 15, React 19]
+- **Frontend**: [e.g., Next.js (current LTS), React (current LTS)]
 - **Backend**: [e.g., Supabase, Edge Functions]
 - **Database**: [e.g., PostgreSQL via Supabase]
 - **Styling**: [e.g., Tailwind CSS]
@@ -201,10 +201,10 @@ vercel --prod          # Manual production deploy
 ## References
 <!-- Links to important documentation -->
 
-- [Project Documentation](@GROK-NEW-PROJECT-SETUP.md)
+- [Project Documentation](@START-HERE.md)
 - [Database Guide](@DATABASE-OVERVIEW.md)
-- [Testing Rules](@TESTING-RULES.md)
-- [API Rules](@API-RULES.md)
+- [Testing Rules](@TESTING-RULES-TEMPLATE.md)
+- [API Rules](@API-RULES-TEMPLATE.md)
 - [Theme Rules](@THEME-RULES-TEMP.md)
 
 ---

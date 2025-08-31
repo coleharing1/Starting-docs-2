@@ -9,8 +9,8 @@ Fast local development without Docker or cloud complexity.
 - **Package Manager**: pnpm (faster) or npm
 
 ### Frontend
-- **Framework**: Next.js 15 with App Router
-- **UI Library**: React 19
+- **Framework**: Next.js (current LTS) with App Router
+- **UI Library**: React (current LTS)
 - **Styling**: Tailwind CSS 3.4+
 - **Component Library**: shadcn/ui
 - **State Management**: Zustand or React Context

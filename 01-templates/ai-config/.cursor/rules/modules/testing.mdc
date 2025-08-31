@@ -1,0 +1,29 @@
+---
+description: "Testing best practices for unit, integration, and end-to-end tests."
+globs: ["**/*.test.{ts,tsx}", "**/*.spec.{ts,tsx}", "**/__tests__/**", "tests/**"]
+tags: ["testing", "quality"]
+priority: "medium"
+version: 1.0.0
+context_limit: 250
+---
+# Testing Rules
+
+## General Principles
+- Strive for at least 80% test coverage for critical business logic.
+- Follow the Arrange-Act-Assert (AAA) pattern.
+- Tests should be independent and repeatable.
+- Mock external dependencies like APIs and databases.
+
+## Unit Tests (Vitest/Jest)
+- Test pure functions and individual components in isolation.
+- Focus on inputs, outputs, and edge cases.
+- Use a testing library like React Testing Library for components.
+
+## Integration Tests
+- Test the interaction between multiple components or modules.
+- Ensure data flows correctly between different parts of the application.
+
+## End-to-End (E2E) Tests (Playwright/Cypress)
+- Test critical user journeys from start to finish.
+- Simulate real user interactions in a browser environment.
+- Use `data-testid` attributes for stable test selectors.

@@ -18,11 +18,14 @@ fi
 
 echo "✅ Node.js version: $(node -v)"
 
-# Get project name
-read -p "📝 Enter project name (kebab-case): " PROJECT_NAME
+# Get project name (supports non-interactive mode via PROJECT_NAME env var or default)
 if [ -z "$PROJECT_NAME" ]; then
-    echo "❌ Project name is required"
-    exit 1
+    if [ -t 0 ]; then
+        read -p "📝 Enter project name (kebab-case): " PROJECT_NAME
+    fi
+fi
+if [ -z "$PROJECT_NAME" ]; then
+    PROJECT_NAME="my-app"
 fi
 
 # Create and enter project directory
@@ -64,7 +67,6 @@ echo "━━━━━━━━━━━━━━━━━━━━━━━━�
 # Install SQLite and Prisma for development database
 npm install --save-dev \
   prisma \
-  @prisma/client \
   @types/node \
   eslint \
   eslint-config-next \
@@ -76,11 +78,11 @@ npm install --save-dev \
   @testing-library/jest-dom \
   vitest \
   @vitejs/plugin-react \
-  playwright \
   @playwright/test
 
 # Install production dependencies
 npm install \
+  @prisma/client \
   @tanstack/react-query \
   zustand \
   react-hook-form \
@@ -306,7 +308,7 @@ cat > CLAUDE.md << EOF
 # Project: ${PROJECT_NAME}
 
 ## Tech Stack
-- Next.js 15+ with App Router
+- Next.js (current LTS) with App Router
 - TypeScript
 - Tailwind CSS + shadcn/ui
 - SQLite (dev) → Supabase (prod)
@@ -432,17 +434,51 @@ echo "━━━━━━━━━━━━━━━━━━━━━━━━�
 echo "📜 Updating package.json scripts..."
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 
-# Update package.json with additional scripts
-npx json -I -f package.json -e 'this.scripts["type-check"] = "tsc --noEmit"'
-npx json -I -f package.json -e 'this.scripts["test"] = "vitest"'
-npx json -I -f package.json -e 'this.scripts["test:ui"] = "vitest --ui"'
-npx json -I -f package.json -e 'this.scripts["test:coverage"] = "vitest --coverage"'
-npx json -I -f package.json -e 'this.scripts["e2e"] = "playwright test"'
-npx json -I -f package.json -e 'this.scripts["db:generate"] = "prisma generate"'
-npx json -I -f package.json -e 'this.scripts["db:migrate"] = "prisma migrate dev"'
-npx json -I -f package.json -e 'this.scripts["db:push"] = "prisma db push"'
-npx json -I -f package.json -e 'this.scripts["db:seed"] = "tsx prisma/seed.ts"'
-npx json -I -f package.json -e 'this.scripts["db:studio"] = "prisma studio"'
+# Use a heredoc to overwrite the scripts section for reliability, avoiding the `npx json` dependency.
+# First, read the existing package.json, remove the old scripts, then append the new ones.
+# This is a bit complex with standard shell tools, so a simpler approach for a template is to define all scripts at once.
+# However, create-next-app generates a package.json, so we'll modify it.
+# A robust way is to use node itself.
+cat > update-scripts.js << 'EOF'
+const fs = require('fs');
+const path = require('path');
+const pkgPath = path.join(process.cwd(), 'package.json');
+const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf-8'));
+
+pkg.scripts = {
+  ...pkg.scripts,
+  "dev": "next dev",
+  "build": "next build",
+  "start": "next start",
+  "lint": "next lint",
+  "type-check": "tsc --noEmit",
+  "format": "prettier --write .",
+  "format:check": "prettier --check .",
+  "test": "vitest",
+  "test:ui": "vitest --ui",
+  "test:coverage": "vitest --coverage",
+  "test:watch": "vitest --watch",
+  "e2e": "playwright test",
+  "e2e:ui": "playwright test --ui",
+  "db:generate": "prisma generate",
+  "db:migrate": "prisma migrate dev",
+  "db:migrate:prod": "prisma migrate deploy",
+  "db:push": "prisma db push",
+  "db:seed": "tsx prisma/seed.ts",
+  "db:studio": "prisma studio",
+  "db:reset": "prisma migrate reset",
+  "prepare": "husky install",
+  "pre-commit": "lint-staged",
+  "clean": "rm -rf .next node_modules",
+  "clean:all": "npm run clean && rm -rf prisma/dev.db"
+};
+
+fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + '\n');
+EOF
+
+node update-scripts.js
+rm update-scripts.js
+
 
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "🗄️ Setting up database..."
@@ -469,7 +505,7 @@ echo "1. cd $PROJECT_NAME"
 echo "2. npm run dev (starts development server)"
 echo "3. Open in Cursor and start with Phase 1"
 echo "4. Add your ideas to project_brainstorm/"
-echo "5. Generate docs using GROK-NEW-PROJECT-SETUP.md"
+echo "5. Generate docs using PROMPTS-INITIAL-DOCS.md, PROMPTS-PLANNING-TRACKING.md, and PROMPTS-ADVANCED-MAINTENANCE.md"
 echo ""
 echo "📝 Available commands:"
 echo "  npm run dev          - Start development server"
@@ -479,6 +515,7 @@ echo "  npm run lint         - Run linter"
 echo "  npm run db:studio    - Open Prisma Studio"
 echo ""
 echo "💡 Remember to update project-history.md every 5-10 file changes!"
+echo "💡 After setup, you may need to run 'npx playwright install' to download browser binaries for E2E testing."
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 EOF
 
