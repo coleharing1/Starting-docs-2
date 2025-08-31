@@ -2,18 +2,10 @@
 
 Use Cursor Chat (Cmd+L) or Composer (Cmd+I) for generation. Reference prior docs with @filename.md. If unclear, AI should ask questions—no assumptions.
 
+See `03-guides/setup/NEW-PROJECT-SETUP.md` for a manual end-to-end flow.
+
 ### 0. Initialize Repo (User Action)
-
-**Quick Start Option:**
-```bash
-# For a complete working project in 3 minutes:
-chmod +x setup.sh
-./setup.sh
-```
-
-**Or Manual Setup:**
 - Clone your template repo
-- Run `npm install` to install dependencies
 - Create a `project_brainstorm/` folder with your initial project ideas, requirements, and any existing documentation
 - Open in Cursor; enable Knowledge uploads for guides:
   - Upload this guide: @START-HERE.md and the PROMPTS-*.md guides.
@@ -23,7 +15,7 @@ chmod +x setup.sh
   - Upload ADR templates from 01-templates/adr/: @ADR-TEMPLATE.md, @ADR-0001-sqlite-first-approach.md
   - Upload checklist templates from 01-templates/checklists/: @KEY-FEATURES-TEMPLATE.md, @PAGES-URLS-TEMPLATE.md
   - Upload examples from 02-examples/: @TAN-THEME-RULES.md (themes folder)
-  - Upload setup guides from 03-guides/setup/: @DATABASE-OVERVIEW.md, @DEPLOYMENT-GUIDE.md, @MCP-SETUP-GUIDE.md
+  - Upload setup guides from 03-guides/setup/: @DATABASE-OVERVIEW.md, @DEPLOYMENT-GUIDE.md, @MCP-SETUP-GUIDE.md, @NEW-PROJECT-SETUP.md
   - Upload workflow guides from 03-guides/workflow/: @AI-WORKFLOW-OPTIMIZATION.md, @BEGINNER-TIPS.md, @CREW-AI-OVERVIEW.md
   - Upload maintenance guides from 03-guides/maintenance/: @PROJECT-HISTORY-INS.md
 

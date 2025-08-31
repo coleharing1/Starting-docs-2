@@ -32,8 +32,8 @@
 
 | ✓ | Task | File/Location | Dependencies | Time | Status | Notes |
 |---|------|---------------|-------------|------|--------|-------|
-| [ ] | Run `setup.sh` script | `/` | Environment Setup | 5 min | Not Started | `chmod +x setup.sh && ./setup.sh`. This bootstraps the project. |
-| [ ] | Open project in Cursor | Editor | `setup.sh` complete | 1 min | Not Started | `File > Open Folder...` |
+| [ ] | Initialize a new Next.js app | `/` | Environment Setup | 5 min | Not Started | `npx create-next-app@latest --ts --tailwind --app --src-dir --import-alias "@/*"` |
+| [ ] | Open project in Cursor | Editor | Project created | 1 min | Not Started | `File > Open Folder...` |
 | [ ] | Test development server | Terminal | Project created | 2 min | Not Started | `npm run dev`. Visit `localhost:3000`. |
 | [ ] | Create initial commit | Terminal | Git repo initialized | 2 min | Not Started | `git add . && git commit -m "feat: initial project setup"` |
 
@@ -45,7 +45,7 @@
 | [ ] | Review ESLint config | `.eslintrc.json` | Next.js app | 5 min | Not Started | Customize rules as needed. |
 | [ ] | Review Prettier config | `.prettierrc` | Project | 2 min | Not Started | Adjust formatting rules if necessary. |
 | [ ] | Verify `.gitignore` | `.gitignore` | Git repo | 3 min | Not Started | Ensure `.env.local`, `node_modules`, `prisma/dev.db` are listed. |
-| [ ] | Create & fill `.env.local` | `.env.local` | Project | 2 min | Not Started | Copy from `.env.local.example` and fill in secrets. |
+| [ ] | Create & fill `.env.local` | `.env.local` | Project | 2 min | Not Started | Add `DATABASE_URL="file:./prisma/dev.db"` and app variables. |
 | [ ] | Configure Tailwind theme | `tailwind.config.ts` | Tailwind installed | 10 min | Not Started | Add custom colors, fonts, and plugins per `theme-rules.md`. |
 
 ### 4. Project & Documentation Structure
@@ -64,7 +64,7 @@
 | ✓ | Task | File/Location | Dependencies | Time | Status | Notes |
 |---|------|---------------|-------------|------|--------|-------|
 | [ ] | Create GitHub repository | github.com | GitHub account | 5 min | Not Started | Keep it private initially. |
-| [ ] | Add remote and push | Terminal | GitHub repo | 2 min | Not Started | `git remote add origin [url]` then `git push -u origin main`. |
+| [ ] | Add remote and push | Terminal | GitHub repo | 2 min | Not Started | `git remote add origin <url>` then `git push -u origin main`. |
 | [ ] | Set up branch protection | GitHub settings | GitHub repo | 5 min | Not Started | Protect the `main` branch from direct pushes. |
 | [ ] | Configure Vercel project | Vercel Dashboard | GitHub repo | 5 min | Not Started | Connect your GitHub repo for auto-deployments. |
 | [ ] | Verify GitHub Actions CI | `.github/workflows/ci.yml`| GitHub repo | 5 min | Not Started | CI should run on the first push and pass. |
@@ -74,9 +74,9 @@
 | ✓ | Task | File/Location | Dependencies | Time | Status | Notes |
 |---|------|---------------|-------------|------|--------|-------|
 | [ ] | Install editor extensions | VS Code/Cursor | Editor | 5 min | Not Started | ESLint, Prettier, Tailwind CSS IntelliSense, Prisma. |
-| [ ] | Configure editor settings | `.vscode/settings.json` | Editor | 5 min | Not Started | e.g., `"editor.formatOnSave": true`. |
-| [ ] | Verify Prisma schema | `prisma/schema.prisma`| Prisma init | 5 min | Not Started | Check the initial schema provided by `setup.sh`. |
-| [ ] | Verify database connection | Prisma Studio | Prisma configured | 2 min | Not Started | Run `npm run db:studio` to open the local DB GUI. |
+| [ ] | Initialize Prisma with SQLite | `prisma/` | Prisma installed | 5 min | Not Started | `npx prisma init --datasource-provider sqlite` |
+| [ ] | Verify Prisma schema | `prisma/schema.prisma`| Prisma init | 5 min | Not Started | Check your initial schema. |
+| [ ] | Verify database connection | Prisma Studio | Prisma configured | 2 min | Not Started | Run `npx prisma generate && npm run db:studio`. |
 
 ### 7. Final Verification
 
@@ -96,9 +96,7 @@
 | Issue | Solution |
 |---|---|
 | **Node.js version too old** | Use `nvm` to switch to Node 18+: `nvm install 18 && nvm use 18`. |
-| **Permission denied running script** | Make the script executable: `chmod +x setup.sh`. |
 | **Port 3000 already in use** | Find and stop the process (`lsof -i :3000` then `kill -9 [PID]`) or run on a different port (`npm run dev -- -p 3001`). |
-| **Prisma client not generated** | Run `npx prisma generate` manually. |
 
 ---
 
